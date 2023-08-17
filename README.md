@@ -1,2 +1,5 @@
-# angular-trivia
-Practicing angular by developing a trivia app.
+# AngularTrivia
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.7.
+
+
