@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlayComponent } from './play/play.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OpenTriviaService } from './open-trivia.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,12 @@ import { PlayComponent } from './play/play.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    OpenTriviaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
