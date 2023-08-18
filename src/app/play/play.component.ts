@@ -20,34 +20,30 @@ class Player {
 })
 
 export class PlayComponent {
+  name1: string = "Jemima";
   questions: Question[];
 
   currentPlayer: Player;
   currentQuestion: Question;
 
   constructor(service: OpenTriviaService) {
-    //this.questions = createQuestions(service);
-    
     this.questions = service.generateQuestions();
-
-    console.log(this.questions);
     
-    let p1name = prompt('Player 1 name?') ?? "Bob";
-    let p2name = prompt('Player 2 name?') ?? "Tony";
-    
-    let player1 = new Player(p1name);
-    let player2 = new Player(p2name);
+    //todo: accept user input for names
+    let player1 = new Player("Bob");
+    let player2 = new Player("Tony");
 
     this.currentPlayer = player1;
     this.currentQuestion = this.questions[0];
 
-    // let questions = new Question[];
-    
-    // = questionsRaw.results.forEach
-    //playGame(questions, [player1,player2]);
+    this.playGame(this.questions, [player1,player2]);
   }
   buttonPress(){
     console.log("Button pressed");
+  }
+
+  onKeyUp(){
+    console.log(this.name1);
   }
 
   playGame(questions: Question[], players: Player[] ) {
@@ -65,23 +61,13 @@ export class PlayComponent {
   
       this.currentPlayer = players[turnIndex % numPlayers]
       console.log(this.currentPlayer.name + " turn...");
+
+      this.currentQuestion = questions[turnIndex];
   
       this.currentPlayer.stars++;
       turnIndex++;
-  
-      //askQuestion(questions.results[turnIndex]);
-  
   }
 }
 
-  }
-
-// function createQuestions(service: OpenTriviaService): Question[] {
-//   let outputQuestions: Question[] = [];
-//   let rawQuestions = service.generateQuestions();
-//   rawQuestions[0].results.forEach(function(ques: Object){
-//     outputQuestions.push(ques as Question)
-//   });
-//   return outputQuestions;
-// }
+}
 

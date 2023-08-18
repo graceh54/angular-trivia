@@ -1,6 +1,8 @@
+<!---<input [(ngModel)]="name1" (keyup.enter)="onKeyUp()"/>--->
+
 <p>Player {{ currentPlayer.name }}:</p>
 <p>{{ currentPlayer.stars }} / 5</p>
 
-{{ questions }}
+<p>{{ currentQuestion.question }}</p>
 
 <button (click)="buttonPress()">Answer</button>

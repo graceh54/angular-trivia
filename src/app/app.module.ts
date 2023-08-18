@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PlayComponent } from './play/play.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OpenTriviaService } from './open-trivia.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OpenTriviaService } from './open-trivia.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     OpenTriviaService
