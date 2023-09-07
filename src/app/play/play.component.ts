@@ -20,8 +20,8 @@ class Player {
 })
 
 export class PlayComponent {
-  name1: string = "Jemima";
   questions: Question[];
+
 
   currentPlayer: Player;
   currentQuestion: Question;
@@ -36,20 +36,18 @@ export class PlayComponent {
     this.currentPlayer = player1;
     this.currentQuestion = this.questions[0];
 
-    this.playGame(this.questions, [player1,player2]);
+    // this.playGame(this.questions, [player1,player2]);
   }
   buttonPress(){
     console.log("Button pressed");
   }
 
-  onKeyUp(){
-    console.log(this.name1);
-  }
 
   playGame(questions: Question[], players: Player[] ) {
   let playing = true;
   let turnIndex = 0;
   let numPlayers = players.length;
+  let selectedAnswer = "N";
   
   while (playing) {
       let winner = (players.find(x => x.stars == 5));

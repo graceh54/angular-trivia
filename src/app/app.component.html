@@ -2,5 +2,15 @@
   <a class="button" routerLink="/">Home</a> |
   <a class="button" routerLink="/play">Play trivia</a>
 </nav>
+<div id="settings" [style.display]="showSettings ? 'block' : 'none'">
+  <h3>New game</h3>
+  <p>Player 1:</p>
+  <input [(ngModel)]="player1NameInput" (keyup.enter)="onKeyUp()"/>
+  <p>Player 2:</p>
+  <input [(ngModel)]="player2NameInput" (keyup.enter)="onKeyUp()"/>
+  <button (click)="startGame()">Play</button>
+</div>
+
+
 
 <router-outlet></router-outlet>
