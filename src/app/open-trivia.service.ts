@@ -19,23 +19,25 @@ export interface Question {
   providedIn: 'root'
 })
 export class OpenTriviaService {
+  response: triviaResponse = {
+    response_code: 0,
+    results: []
+  };
+  
+  constructor(private http: HttpClient) { 
+    this.generateQuestions();
+  }
 
-  constructor(private http: HttpClient) { }
-
-  generateQuestions(){
-    let response: triviaResponse = {
-      response_code: 0,
-      results: []
-    };
+  generateQuestions(){  
     let amount = '20';
     let difficulty = 'easy';
     let type = 'multiple'; //multiple choice vs. true/false
 
     let url = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}`;
+
     this.http.get(url).subscribe((res: any) => {
-      response = res as triviaResponse;
+      console.log("Generated questions.");
+      this.response = res;
     });
-    console.log(response);
-    return response.results;
   }
 }

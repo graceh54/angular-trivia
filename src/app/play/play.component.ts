@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 import { OpenTriviaService, Question } from '../open-trivia.service';
 
 
@@ -22,16 +23,15 @@ class Player {
 export class PlayComponent {
   questions: Question[];
 
-
   currentPlayer: Player;
   currentQuestion: Question;
 
-  constructor(service: OpenTriviaService) {
-    this.questions = service.generateQuestions();
+  constructor(service: OpenTriviaService, appComponent: AppComponent) {
+    this.questions = service.response.results;
+    console.log(this.questions);
     
-    //todo: accept user input for names
-    let player1 = new Player("Bob");
-    let player2 = new Player("Tony");
+    let player1 = new Player(appComponent.player1NameInput);
+    let player2 = new Player(appComponent.player2NameInput);
 
     this.currentPlayer = player1;
     this.currentQuestion = this.questions[0];

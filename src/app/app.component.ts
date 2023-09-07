@@ -15,10 +15,7 @@ export class AppComponent {
   showSettings = true;
 
   constructor(private router: Router) {
-
-
   }
-
 
   onKeyUp(){
     console.log("Player 1 = " + this.player1NameInput);
