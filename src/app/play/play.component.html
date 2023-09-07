@@ -6,8 +6,7 @@
 <p>{{ currentPlayer.stars }} / 5</p>
 
 <p>{{ currentQuestion.question }}</p>
-
 <button (click)="buttonPress()">{{ currentQuestion.correct_answer }}</button>
-<button (click)="buttonPress()">Answer</button>
-<button (click)="buttonPress()">Answer</button>
-<button (click)="buttonPress()">Answer</button>
+<li *ngFor="let incorrect of currentQuestion.incorrect_answers">
+<button (click)="buttonPress()">{{ incorrect }}</button>
+</li>
