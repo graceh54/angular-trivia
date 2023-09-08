@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-interface triviaResponse {
+interface TriviaResponse {
   response_code: number,
   results: Question[]
 }
@@ -19,13 +19,7 @@ export interface Question {
   providedIn: 'root'
 })
 export class OpenTriviaService {
-  response: triviaResponse = {
-    response_code: 0,
-    results: []
-  };
-  
   constructor(private http: HttpClient) { 
-    this.generateQuestions();
   }
 
   generateQuestions(){  
@@ -35,9 +29,13 @@ export class OpenTriviaService {
 
     let url = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}`;
 
-    this.http.get(url).subscribe((res: any) => {
-      console.log("Generated questions.");
-      this.response = res;
+    const promise = new Promise<Question[]>((resolve, reject) => {
+      this.http.get<TriviaResponse>(url).subscribe((res: any) => {
+          console.log("Generated questions.");
+          resolve(res.results);
+        });
     });
+    return promise;
+
   }
 }

@@ -1,12 +1,15 @@
-<!---<input [(ngModel)]="name1" (keyup.enter)="onKeyUp()"/>--->
-
+<div id="questionsLoader" [style.display]="loadingQuestions ? 'block' : 'none'">
+    <p>Loading questions...</p>
+</div>
+<div id="questions" [style.display]="showQuestions ? 'block' : 'none'">
 
 <p>Player {{ currentPlayer.name }}:</p>
 
 <p>{{ currentPlayer.stars }} / 5</p>
 
 <p>{{ currentQuestion.question }}</p>
-<button (click)="buttonPress()">{{ currentQuestion.correct_answer }}</button>
+<button (click)="correctAnswer()">{{ currentQuestion.correct_answer }}</button>
 <li *ngFor="let incorrect of currentQuestion.incorrect_answers">
-<button (click)="buttonPress()">{{ incorrect }}</button>
+<button (click)="incorrectAnswer()">{{ incorrect }}</button>
 </li>
+</div>
