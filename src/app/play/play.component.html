@@ -1,13 +1,21 @@
-<div id="questionsLoader" [style.display]="loadingQuestions ? 'block' : 'none'">
+<div id="questionsLoader" class="container" [style.display]="loadingQuestions ? 'block' : 'none'">
     <p>Loading questions...</p>
 </div>
-<div id="questions" [style.display]="showQuestions ? 'block' : 'none'">
+<div id="scoreboard" class="container">
+    <p>{{ players[turnIndex%2].name}} : {{ players[turnIndex%2].stars}}</p>
+    <p>{{ players[turnIndex%1].name}} : {{ players[turnIndex%1].stars}}</p>
 
-<p>Player {{ currentPlayer.name }}:</p>
+
+</div>
+<div id="questions" class="container" [style.display]="showQuestions ? 'block' : 'none'">
+
+<p>Player {{ currentPlayer.name }}'s turn:</p>
 
 <p>{{ currentPlayer.stars }} / 5</p>
 
-<p>{{ currentQuestion.question }}</p>
+<h4>{{ currentQuestion.question }}</h4>
+<p>{{ currentQuestion.category }}</p>
+
 <button (click)="correctAnswer()">{{ currentQuestion.correct_answer }}</button>
 <li *ngFor="let incorrect of currentQuestion.incorrect_answers">
 <button (click)="incorrectAnswer()">{{ incorrect }}</button>

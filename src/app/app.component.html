@@ -1,8 +1,15 @@
-<nav>
-  <a class="button" routerLink="/">Home</a> |
-  <a class="button" routerLink="/play">Play trivia</a>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        <a class="nav-link" routerLink="/play">Play trivia</a>
+      </div>
+    </div>
+  </div>
 </nav>
-<div id="settings" [style.display]="showSettings ? 'block' : 'none'">
+
+<div id="settings" class="container" [style.display]="showSettings ? 'block' : 'none'">
   <h3>New game</h3>
   <p>Player 1:</p>
   <input [(ngModel)]="player1NameInput" (keyup.enter)="onKeyUp()"/>
