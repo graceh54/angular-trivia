@@ -44,6 +44,7 @@ export class PlayComponent {
       this.currentQuestion = this.questions[0];
       this.showQuestions = true;
       this.loadingQuestions = false;
+      this.playRound();
     });
     
     let player1 = new Player(appComponent.player1NameInput);
@@ -73,6 +74,43 @@ export class PlayComponent {
     console.log(this.currentPlayer.name + " turn...");
 
     this.currentQuestion = this.questions[this.turnIndex];
+    this.randomiseButtons();
+  }
+
+  randomiseButtons(){
+    //clear existing buttons
+    let buttonDiv = document.getElementById('answerButtons');
+    if (buttonDiv){
+      buttonDiv.innerHTML = "";
+    }
+
+    let allButtons: HTMLButtonElement[] = [];
+
+    //create correct button
+    let correctButton = document.createElement('button');
+    correctButton.type = 'button';
+    correctButton.innerHTML = this.currentQuestion.correct_answer;
+    correctButton.addEventListener('click', (e:Event) => this.correctAnswer());
+    allButtons.push(correctButton);
+
+    //create incorrect buttons
+    for (let i=0; i<3; i++) {
+      let incorrectButton = document.createElement('button');
+      incorrectButton.type = 'button';
+      incorrectButton.innerHTML = this.currentQuestion.incorrect_answers[i];
+      incorrectButton.addEventListener('click', (e:Event) => this.incorrectAnswer());
+
+      allButtons.push(incorrectButton);
+    }
+    console.log("Allbuttons has " + allButtons.length + " items");
+    
+    //shuffle buttons
+    allButtons.sort(() => Math.random() - 0.5);
+
+
+    //add array to button div
+    allButtons.forEach((value) => buttonDiv?.appendChild(value));
+    
   }
 }
 

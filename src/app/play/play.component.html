@@ -16,8 +16,7 @@
 <h4 [innerHTML]="currentQuestion.question"></h4>
 <p>{{ currentQuestion.category }}</p>
 
-<button (click)="correctAnswer()">{{ currentQuestion.correct_answer }}</button>
-<li *ngFor="let incorrect of currentQuestion.incorrect_answers">
-<button (click)="incorrectAnswer()">{{ incorrect }}</button>
-</li>
+<div id="answerButtons">
+
+</div>
 </div>
