@@ -1,9 +1,9 @@
 <div id="questionsLoader" class="container" [style.display]="loadingQuestions ? 'block' : 'none'">
     <p>Loading questions...</p>
 </div>
-<div id="scoreboard" class="container">
-    <p>{{ players[turnIndex%2].name}} : {{ players[turnIndex%2].stars}}</p>
-    <p>{{ players[turnIndex%1].name}} : {{ players[turnIndex%1].stars}}</p>
+<div id="scoreboard" class="container" *ngFor="let player of players">
+    <p>{{ player.name }} : {{ player.stars }} / 5</p>
+    <!-- <p>{{ players[turnIndex%1].name}} : {{ players[turnIndex%1].stars}} / 5</p> -->
 
 
 </div>
@@ -16,7 +16,7 @@
 <h4 [innerHTML]="currentQuestion.question"></h4>
 <p>{{ currentQuestion.category }}</p>
 
-<div id="answerButtons">
+<div id="answerButtons" class="d-grid gap-2 col-6">
 
 </div>
 </div>

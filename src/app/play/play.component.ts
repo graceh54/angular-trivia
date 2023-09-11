@@ -58,11 +58,14 @@ export class PlayComponent {
     this.currentPlayer.stars++;
     this.turnIndex++;
     this.playRound();
+    console.log(this.currentPlayer.name + " correct");
   }
 
   incorrectAnswer(){
     this.turnIndex++;
     this.playRound();
+    console.log(this.currentPlayer.name + " incorrect");
+
   }
 
   playRound(){
@@ -94,15 +97,14 @@ export class PlayComponent {
     allButtons.push(correctButton);
 
     //create incorrect buttons
-    for (let i=0; i<3; i++) {
+    this.currentQuestion.incorrect_answers.forEach((answer) => {
       let incorrectButton = document.createElement('button');
       incorrectButton.type = 'button';
-      incorrectButton.innerHTML = this.currentQuestion.incorrect_answers[i];
+      incorrectButton.innerHTML = answer;
       incorrectButton.addEventListener('click', (e:Event) => this.incorrectAnswer());
 
       allButtons.push(incorrectButton);
-    }
-    console.log("Allbuttons has " + allButtons.length + " items");
+    })
     
     //shuffle buttons
     allButtons.sort(() => Math.random() - 0.5);
